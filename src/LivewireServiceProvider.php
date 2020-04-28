@@ -179,7 +179,7 @@ class LivewireServiceProvider extends ServiceProvider
     {
         if (method_exists($this->app['blade.compiler'], 'precompiler')) {
             $this->app['blade.compiler']->precompiler(function ($string) {
-                return (new LivewireTagCompiler)->compile($string);
+                return (new LivewireTagCompiler($this->app['blade.compiler']))->compile($string);
             });
         }
     }
